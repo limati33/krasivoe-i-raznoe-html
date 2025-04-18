@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Живой Векторный Арт</title>
+  <link rel="stylesheet" href="css/styles5.css" />
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <!-- Панель переключения анимаций -->
+  <div class="controls">
+    <button onclick="setAnimation('waves')">Волны</button>
+    <button onclick="setAnimation('grid')">3D Сетка</button>
+    <button onclick="setAnimation('fractals')">Фракталы</button>
+    <button onclick="setAnimation('kaleidoscope')">Калейдоскоп</button>
+    <button onclick="setAnimation('particles')">Частицы</button>
+    <button onclick="toggleSettings()">Настройки</button>
+  </div>
+
+  <!-- Панель настроек -->
+  <div class="settings" id="settings">
+    <!-- Настройки для Волны -->
+    <div id="wave-settings" class="settings-section">
+      <h3>Волны</h3>
+      
+      <label for="wave-color">Цвет волн:</label>
+      <input type="color" id="wave-color" value="#00c8ff">
+      
+      <label for="wave-speed">Скорость волн:</label>
+      <input type="range" id="wave-speed" min="0" max="5" step="0.1" value="0.5">
+      
+      <label for="wave-amplitude">Амплитуда волн:</label>
+      <input type="range" id="wave-amplitude" min="10" max="100" step="1" value="30">
+      
+      <label for="wave-frequency">Частота волн:</label>
+      <input type="range" id="wave-frequency" min="1" max="180" step="1" value="30">
+      
+      <label for="wave-offset">Сдвиг волн:</label>
+      <input type="range" id="wave-offset" min="-50" max="50" step="1" value="0">
+      
+      <label for="wave-direction">Направление волн:</label>
+      <select id="wave-direction">
+        <option value="horizontal">Горизонтальное</option>
+        <option value="vertical">Вертикальное</option>
+      </select>
+    </div>
+
+    <!-- Настройки для 3D Сетки -->
+    <div id="grid-settings" class="settings-section">
+      <h3>3D Сетка</h3>
+      <label for="grid-color">Цвет сетки:</label>
+      <input type="color" id="grid-color" value="#00ff00">
+      <label for="grid-size">Размер ячейки:</label>
+      <input type="range" id="grid-size" min="10" max="100" step="1" value="20">
+      <label for="grid-speed">Скорость сетки:</label>
+      <input type="range" id="grid-speed" min="0" max="5" step="0.1" value="1">
+    </div>
+
+    <!-- Настройки для Фракталов -->
+    <div id="fractal-settings" class="settings-section">
+      <h3>Фракталы</h3>
+      <label for="fractal-color">Цвет фракталов:</label>
+      <input type="color" id="fractal-color" value="#ffffff">
+      <label for="fractal-size">Начальный размер ветви:</label>
+      <input type="range" id="fractal-size" min="50" max="300" step="10" value="100">
+    </div>
+
+    <!-- Настройки для Калейдоскопа -->
+    <div id="kaleido-settings" class="settings-section">
+      <h3>Калейдоскоп</h3>
+      <label for="kaleido-speed">Скорость изменения цвета (°/сек):</label>
+      <input type="range" id="kaleido-speed" min="10" max="100" step="1" value="50">
+      <label for="kaleido-radius">Базовый радиус:</label>
+      <input type="range" id="kaleido-radius" min="50" max="200" step="1" value="100">
+    </div>
+
+    <!-- Настройки для Частиц -->
+    <div id="particle-settings" class="settings-section">
+      <h3>Частицы</h3>
+      <label for="particle-color">Цвет частиц:</label>
+      <input type="color" id="particle-color" value="#ffffff">
+      <label for="particle-speed">Скорость частиц:</label>
+      <input type="range" id="particle-speed" min="0" max="5" step="0.1" value="1">
+      <label for="particle-size">Размер частиц:</label>
+      <input type="range" id="particle-size" min="1" max="10" step="0.5" value="3">
+      <label for="particle-count">Количество частиц:</label>
+      <input type="range" id="particle-count" min="10" max="300" step="1" value="100">
+    </div>
+  </div>
+
+  <footer>
+    <a href="index4.html">
+      <button class="footer-button">Prev</button>
+    </a>
+    <a href="index6.html">
+      <button class="footer-button">Next</button>
+    </a>
+  </footer>
+
+  <script src="js/script5.js"></script>
+</body>
+</html>

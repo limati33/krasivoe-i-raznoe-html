@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Круги следят за мышью</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #222;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none; /* Круги не мешают кликам */
+            transition: transform 0.1s linear;
+        }
+
+        .circle:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 0, 0, 0.5);
+        }
+
+        .circle:nth-child(2) {
+            width: 90px;
+            height: 90px;
+            background: rgba(0, 255, 0, 0.5);
+        }
+
+        .circle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 255, 0.5);
+        }
+
+        .circle:nth-child(4) {
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <script>
+        const circles = document.querySelectorAll('.circle');
+
+        document.addEventListener('mousemove', (event) => {
+            let delay = 0;
+            circles.forEach(circle => {
+                setTimeout(() => {
+                    circle.style.transform = `translate(${event.clientX - circle.clientWidth / 2}px, ${event.clientY - circle.clientHeight / 2}px)`;
+                }, delay);
+                delay += 50; // Задержка для плавного движения
+            });
+        });
+    </script>
+</body>
+</html>

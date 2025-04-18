@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.stripe {
+    position: relative;
+    width: 25%;  /* Каждая полоса занимает 25% ширины */
+    height: 100%;
+    overflow: hidden;
+    transition: background-color 0.5s ease-in-out;
+}
+
+/* Базовые цвета полос */
+.stripe:nth-child(1) { background: #444; }
+.stripe:nth-child(2) { background: #888; }
+.stripe:nth-child(3) { background: #444; }
+.stripe:nth-child(4) { background: #888; }
+
+/* Цвета при наведении */
+.stripe:nth-child(1):hover { background: #ff4444; }
+.stripe:nth-child(2):hover { background: #44ff44; }
+.stripe:nth-child(3):hover { background: #4444ff; }
+.stripe:nth-child(4):hover { background: #ffff44; }
+
+/* Стили для фото */
+.stripe img {
+	padding: 15px 15px 0px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	max-width: 100%;
+	height: auto;
+	filter: blur(6px);
+	transition: filter 0.5s ease-in-out;
+	z-index: 5;
+}
+
+/* При наведении фото размывается */
+.stripe:hover img {
+    filter: blur(0px);
+}
+
+/* Оверлей с текстом (создаётся JS) */
+.overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* При hover на .stripe текст появляется */
+.stripe:hover .overlay-text {
+    opacity: 1;
+}
+
+/* Стили для каждой строки в оверлее */
+.overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.overlay-text div {
+    white-space: nowrap;
+    font-size: 48px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.overlay-text div:nth-child(even) {
+    animation: marquee-left 10s linear infinite;
+}
+
+.overlay-text div:nth-child(odd) {
+    animation: marquee-right 10s linear infinite;
+}
+
+/* Ключевые кадры для движения влево */
+/* Движение влево */
+@keyframes marquee-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Движение вправо */
+@keyframes marquee-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
+
+/* Стили футера */
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+}
+.footer-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #FF9F43;
+    color: black;
+    border: 2px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.footer-button:hover {
+    background: #ee8c2e;
+    color: white;
+    border: 2px solid #fff;
+    transform: translateY(-3px);
+}
+.footer-button:active {
+    background: #B23A3A;
+    transform: translateY(1px);
+}

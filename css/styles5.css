@@ -1,0 +1,95 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  font-family: sans-serif;
+  color: #fff;
+}
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.controls {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+.controls button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.controls button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+.settings {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  border-radius: 8px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 2;
+  display: none;
+}
+.settings h3 {
+  margin: 10px 0 5px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 3px;
+  font-size: 16px;
+}
+.settings label {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+}
+.settings input[type="range"],
+.settings input[type="color"] {
+  width: 100%;
+}
+footer {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  z-index: 2;
+}
+.footer-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #FF9F43;
+  color: black;
+  border: 2px solid #000;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.footer-button:hover {
+  background: #ee8c2e;
+  color: white;
+  border: 2px solid #fff;
+  transform: translateY(-3px);
+}
+.footer-button:active {
+  background: #B23A3A;
+  transform: translateY(1px);
+}
