@@ -1,0 +1,144 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: radial-gradient(circle at center, #1a1a2e, #0f0f1a);
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+}
+
+.kiana-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  animation: glow 6s ease-in-out infinite alternate;
+}
+
+.kiana-glow h1 {
+  font-size: 3em;
+  color: #9cf;
+  text-shadow: 0 0 20px #6df, 0 0 40px #8af;
+}
+
+.kiana-glow p {
+  font-size: 1.2em;
+  color: #eef;
+  text-shadow: 0 0 10px #7cf;
+}
+
+@keyframes glow {
+  0% { filter: brightness(1); transform: translate(-50%, -50%) scale(1); }
+  100% { filter: brightness(1.2); transform: translate(-50%, -50%) scale(1.05); }
+}
+
+footer {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+footer a {
+  pointer-events: all;
+  text-decoration: none;
+}
+
+.footer-button {
+  background: rgba(155, 200, 255, 0.1);
+  color: #9cf;
+  border: 2px solid #9cf;
+  border-radius: 12px;
+  padding: 8px 20px;
+  font-size: 16px;
+  font-family: monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.footer-button:hover {
+  background: #9cf;
+  color: #000;
+  transform: scale(1.1);
+}
+
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #9cf;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #9cf;
+  animation: twinkle ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.2; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.5); }
+}
+
+.kiana-glow p {
+  font-size: 1.2em;
+  color: #eef;
+  text-shadow: 0 0 10px #7cf;
+  transition: opacity 1s ease;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.comet {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.9;
+  animation: cometMove linear forwards;
+}
+
+@keyframes cometMove {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-120vw, 120vh);
+    opacity: 0;
+  }
+}
+
+.comet::after {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: -30px;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+  transform: rotate(45deg);
+  opacity: 0.5;
+  filter: blur(8px);
+}

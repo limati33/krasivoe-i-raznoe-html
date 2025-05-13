@@ -1,26 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Гравитационная сетка+</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      overflow: hidden;
-      height: 100%;
-    }
-    canvas {
-      display: block;
-      cursor: crosshair;
-    }
-  </style>
-</head>
-<body>
-<canvas id="canvas"></canvas>
-
-<script>
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -62,7 +39,7 @@ canvas.addEventListener('mousedown', (e) => {
     x: e.clientX,
     y: e.clientY,
     time: performance.now(),
-    force: e.button === 2 ? -1 : 1 // правый клик = отталкивание
+    force: e.button === 2 ? -1 : 1
   });
 
   createRipple(e.clientX, e.clientY, e.button === 2 ? 'red' : 'cyan');
@@ -78,13 +55,13 @@ canvas.addEventListener('mousemove', (e) => {
   mouse.y = e.clientY;
 });
 
-canvas.addEventListener('contextmenu', e => e.preventDefault()); // отключаем контекстное меню
+canvas.addEventListener('contextmenu', e => e.preventDefault());
 
 function createRipple(x, y, color) {
   ripples.push({
     x, y, color,
     radius: 0,
-    maxRadius: 200
+    maxRadius: 600
   });
 }
 
@@ -103,19 +80,30 @@ function playClickSound(freq) {
 function animate(time) {
   ctx.clearRect(0, 0, w, h);
 
-  // Рисуем ripple эффекты
   for (let i = ripples.length - 1; i >= 0; i--) {
     const r = ripples[i];
+    const alpha = 1 - r.radius / r.maxRadius;
+
+    // внешнее кольцо
     ctx.beginPath();
-    ctx.strokeStyle = r.color;
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = `rgba(0, 255, 255, ${alpha})`;
+    ctx.lineWidth = 8; // толще
     ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
     ctx.stroke();
-    r.radius += 4;
+
+    // внутренняя яркая часть
+    const gradient = ctx.createRadialGradient(r.x, r.y, 0, r.x, r.y, r.radius);
+    gradient.addColorStop(0, `rgba(0,255,255,${alpha * 0.5})`);
+    gradient.addColorStop(1, 'rgba(0,255,255,0)');
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+    ctx.fill();
+
+    r.radius += 6;
     if (r.radius > r.maxRadius) ripples.splice(i, 1);
   }
 
-  // Обновляем частицы
   for (const p of particles) {
     for (const g of gravityPoints) {
       const dx = g.x - p.x;
@@ -131,7 +119,6 @@ function animate(time) {
       p.vy += (dy / dist) * force;
     }
 
-    // Притягивание курсора как магнита
     if (mouse.down) {
       const dx = mouse.x - p.x;
       const dy = mouse.y - p.y;
@@ -141,25 +128,19 @@ function animate(time) {
       p.vy += (dy / dist) * force;
     }
 
-    // Возврат к исходной позиции
     p.vx += (p.ox - p.x) * 0.01;
     p.vy += (p.oy - p.y) * 0.01;
-
-    // Сопротивление
     p.vx *= 0.9;
     p.vy *= 0.9;
-
     p.x += p.vx;
     p.y += p.vy;
 
-    // Отрисовка точки
     ctx.beginPath();
     ctx.fillStyle = '#0ff';
     ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
     ctx.fill();
   }
 
-  // Удаление устаревших гравитационных точек
   while (gravityPoints.length && time - gravityPoints[0].time > 1500) {
     gravityPoints.shift();
   }
@@ -169,6 +150,3 @@ function animate(time) {
 
 requestAnimationFrame(animate);
 window.addEventListener('resize', () => location.reload());
-</script>
-</body>
-</html>
