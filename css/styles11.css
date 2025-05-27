@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #b0b0b0; /* светло-серый фон */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.circle-container {
+  position: relative;
+  width: 640px;
+  height: 640px;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Генерация кругов с чередующимися оттенками серого */
+.circle1  { width: 640px; height: 640px; top: 0px;   left: 0px;   background: #888; animation-delay: 0s;    }
+.circle2  { width: 608px; height: 608px; top: 16px;  left: 16px;  background: #aaa; animation-delay: 0.05s; }
+.circle3  { width: 576px; height: 576px; top: 32px;  left: 32px;  background: #777; animation-delay: 0.1s;  }
+.circle4  { width: 544px; height: 544px; top: 48px;  left: 48px;  background: #ccc; animation-delay: 0.15s; }
+.circle5  { width: 512px; height: 512px; top: 64px;  left: 64px;  background: #666; animation-delay: 0.2s;  }
+.circle6  { width: 480px; height: 480px; top: 80px;  left: 80px;  background: #ddd; animation-delay: 0.25s; }
+.circle7  { width: 448px; height: 448px; top: 96px;  left: 96px;  background: #555; animation-delay: 0.3s;  }
+.circle8  { width: 416px; height: 416px; top: 112px; left: 112px; background: #eee; animation-delay: 0.35s; }
+.circle9  { width: 384px; height: 384px; top: 128px; left: 128px; background: #444; animation-delay: 0.4s;  }
+.circle10 { width: 352px; height: 352px; top: 144px; left: 144px; background: #f0f0f0; animation-delay: 0.45s; }
+
+.circle11 { width: 320px; height: 320px; top: 160px; left: 160px; background: #333; animation-delay: 0.5s;  }
+.circle12 { width: 288px; height: 288px; top: 176px; left: 176px; background: #fafafa; animation-delay: 0.55s; }
+.circle13 { width: 256px; height: 256px; top: 192px; left: 192px; background: #222; animation-delay: 0.6s;  }
+.circle14 { width: 224px; height: 224px; top: 208px; left: 208px; background: #ffffff; animation-delay: 0.65s; }
+.circle15 { width: 192px; height: 192px; top: 224px; left: 224px; background: #111; animation-delay: 0.7s;  }
+.circle16 { width: 160px; height: 160px; top: 240px; left: 240px; background: #e8e8e8; animation-delay: 0.75s; }
+.circle17 { width: 128px; height: 128px; top: 256px; left: 256px; background: #000; animation-delay: 0.8s;  }
+.circle18 { width: 96px;  height: 96px;  top: 272px; left: 272px; background: #d0d0d0; animation-delay: 0.85s; }
+.circle19 { width: 64px;  height: 64px;  top: 288px; left: 288px; background: #101010; animation-delay: 0.9s;  }
+.circle20 { width: 32px;  height: 32px;  top: 304px; left: 304px; background: #f8f8f8; animation-delay: 0.95s; }
+
+footer {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 10;
+}
+
+.footer-button {
+  background: #888;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.footer-button:hover {
+  background: #666;
+}

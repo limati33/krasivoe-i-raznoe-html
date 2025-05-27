@@ -1,5 +1,5 @@
 @echo off
-set /p msg=Введите сообщение для коммита: 
+set /p msg=Commit text: 
 
 git add .
 git commit -m "%msg%"
